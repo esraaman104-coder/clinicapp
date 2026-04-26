@@ -1,0 +1,34 @@
+# Agent files
+.agent/
+.planning/
+.pytest_cache/
+AGENT_REPLY_PROMPT.md
+AGENT_RULES.md
+AGENT_SKILL.md
+GSD_INTEGRATION_SKILL.md
+MASTER_PROMPT.md
+PLAN_REVIEW_RESPONSE.md
+PROJECT_REVIEW_EXPORT.md
+SCHEMA_REFERENCE.md
+SESSION_STARTER.md
+TASK_TRACKER.md
+
+# Zip files and review folders
+*.zip
+erp_review_files/
+get-shit-done-main/
+
+# Temporary files
+project_structure.txt
+payload.json
+query
+New Text Document.txt
+current_implementation_plan.md
+materials_erp_full_plan.md
+
+# Scripts
+bundle_files.py
+create_bundle.ps1
+create_zip.py
+export_full_project.py
+zip_files.ps1

@@ -1,0 +1,78 @@
+:root {
+  /* ─── Primary Brand ─── */
+  --color-brand-primary:     #C17A2B;   /* برونز مواد بناء — الهوية */
+  --color-brand-primary-rgb: 193, 122, 43;
+  --color-brand-light:       #D4954A;
+  --color-brand-dark:        #9A5E1A;
+  --color-brand-muted:       rgba(193, 122, 43, 0.12);
+
+  /* ─── Surfaces (Dark Theme Default) ─── */
+  --color-bg-base:           #0F1117;   /* خلفية أساسية */
+  --color-bg-surface:        #171B26;   /* كاردات وبانلز */
+  --color-bg-elevated:       #1E2333;   /* modal, dropdown */
+  --color-bg-overlay:        rgba(15, 17, 23, 0.85);
+
+  /* ─── Borders ─── */
+  --color-border-default:    rgba(255, 255, 255, 0.07);
+  --color-border-strong:     rgba(255, 255, 255, 0.14);
+  --color-border-brand:      rgba(193, 122, 43, 0.4);
+
+  /* ─── Text ─── */
+  --color-text-primary:      #F0EDE8;   /* أبيض دافئ */
+  --color-text-secondary:    #9A9690;
+  --color-text-muted:        #5C5A56;
+  --color-text-brand:        #C17A2B;
+  --color-text-inverse:      #0F1117;
+
+  /* ─── Semantic Colors ─── */
+  --color-success:           #2ECC82;
+  --color-success-muted:     rgba(46, 204, 130, 0.1);
+  --color-warning:           #F5A623;
+  --color-warning-muted:     rgba(245, 166, 35, 0.1);
+  --color-danger:            #E8455A;
+  --color-danger-muted:      rgba(232, 69, 90, 0.1);
+  --color-info:              #4A9EF5;
+  --color-info-muted:        rgba(74, 158, 245, 0.1);
+
+  /* ─── Sidebar ─── */
+  --color-sidebar-bg:        #0C0F16;
+  --color-sidebar-item-hover: rgba(193, 122, 43, 0.08);
+  --color-sidebar-item-active: rgba(193, 122, 43, 0.15);
+
+  /* ─── Spacing ─── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ─── Radius ─── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-full: 9999px;
+
+  /* ─── Shadows ─── */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:   0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg:   0 8px 32px rgba(0,0,0,0.6);
+  --shadow-brand: 0 0 0 1px rgba(193,122,43,0.3), 0 4px 16px rgba(193,122,43,0.15);
+
+  /* ─── Transitions ─── */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ─── Z-index ─── */
+  --z-sidebar:   100;
+  --z-topbar:    200;
+  --z-dropdown:  300;
+  --z-modal:     400;
+  --z-toast:     500;
+}

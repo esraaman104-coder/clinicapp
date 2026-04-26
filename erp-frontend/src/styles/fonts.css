@@ -1,0 +1,41 @@
+/* Arabic Primary: Noto Kufi Arabic — للعناوين */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&display=swap');
+
+/* Arabic Body: IBM Plex Arabic — للنصوص */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap');
+
+/* Numbers/Code: JetBrains Mono — للأرقام والكود */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --font-display:  'Noto Kufi Arabic', sans-serif;   /* عناوين كبيرة */
+  --font-body:     'IBM Plex Sans Arabic', sans-serif; /* نصوص عامة */
+  --font-numeric:  'JetBrains Mono', monospace;       /* أرقام، أسعار */
+
+  /* Scale */
+  --text-xs:    11px;
+  --text-sm:    13px;
+  --text-base:  15px;
+  --text-md:    17px;
+  --text-lg:    20px;
+  --text-xl:    24px;
+  --text-2xl:   30px;
+  --text-3xl:   38px;
+  --text-hero:  52px;
+
+  /* Line Heights */
+  --leading-tight:  1.2;
+  --leading-snug:   1.4;
+  --leading-normal: 1.6;
+  --leading-loose:  1.8;
+}
+
+/* ─── Utility Classes ─── */
+.font-display  { font-family: var(--font-display); }
+.font-numeric  { font-family: var(--font-numeric); letter-spacing: 0.02em; }
+
+/* الأرقام تُعرض دائماً بخط numeric */
+.price, .quantity, .percentage, [data-numeric] {
+  font-family: var(--font-numeric);
+  font-variant-numeric: tabular-nums;
+}
