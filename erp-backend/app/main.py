@@ -36,7 +36,6 @@ async def get_redis() -> aioredis.Redis:
         )
     return _redis_client
 
-# ─── CORS ─────────────────────────────────────────────────────────────────────
 _raw_origins = os.getenv("ALLOWED_ORIGINS", "*")
 ALLOWED_ORIGINS = ["*"] if _raw_origins == "*" else [o.strip() for o in _raw_origins.split(",") if o.strip()]
 
@@ -58,7 +57,10 @@ app = FastAPI(title="ERP مواد البناء API", lifespan=lifespan)
 # ─── Middleware: Rate Limiting + Security Headers ─────────────────────────────
 @app.middleware("http")
 async def security_and_rate_limit(request: Request, call_next):
-    client_ip = request.client.host
+    if request.method == "OPTIONS":
+        return await call_next(request)
+        
+    client_ip = request.client.host if request.client else "127.0.0.1"
     now = time.time()
     window_start = now - RATE_LIMIT_WINDOW
     
@@ -118,13 +120,14 @@ app.include_router(purchases_router,  prefix="/api")
 app.include_router(reports_router,    prefix="/api")
 app.include_router(logs_router,       prefix="/api")
 
-# ─── CORS (بعد الـ routers دائماً) ───────────────────────────────────────────
+# ─── CORS (Must be the last added middleware to be the outermost layer) ───
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True if _raw_origins != "*" else False,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # ─── Root Endpoints ───────────────────────────────────────────────────────────
