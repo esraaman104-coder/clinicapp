@@ -57,6 +57,7 @@ app = FastAPI(title="ERP مواد البناء API", lifespan=lifespan)
 # ─── Middleware: Rate Limiting + Security Headers ─────────────────────────────
 @app.middleware("http")
 async def security_and_rate_limit(request: Request, call_next):
+    # Skip CORS preflight
     if request.method == "OPTIONS":
         return await call_next(request)
         
@@ -92,7 +93,6 @@ async def security_and_rate_limit(request: Request, call_next):
                 },
             )
     except Exception:
-        # إذا فشل Redis، نسمح بالطلب ولا نوقف التطبيق
         remaining = RATE_LIMIT_REQUESTS - 1
 
     response = await call_next(request)
@@ -120,14 +120,13 @@ app.include_router(purchases_router,  prefix="/api")
 app.include_router(reports_router,    prefix="/api")
 app.include_router(logs_router,       prefix="/api")
 
-# ─── CORS (Must be the last added middleware to be the outermost layer) ───
+# ─── CORS ─────────────────────────────────────────────────────────────────────
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True if _raw_origins != "*" else False,
     allow_methods=["*"],
     allow_headers=["*"],
-    expose_headers=["*"],
 )
 
 # ─── Root Endpoints ───────────────────────────────────────────────────────────
