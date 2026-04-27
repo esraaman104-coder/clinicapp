@@ -1,6 +1,3 @@
 {
-  "buildCommand": "cd erp-frontend && npm install && npm run build",
-  "outputDirectory": "erp-frontend/dist",
-  "framework": "vite",
-  "installCommand": "cd erp-frontend && npm install"
+  "rootDirectory": "erp-frontend"
 }
