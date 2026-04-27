@@ -2,15 +2,15 @@ export interface Category {
   id: string;
   name: string;
   color: string;
-  description?: string | null;
+  description?: string;
   is_active?: boolean;
 }
 
 export interface Product {
   id: string;
   name: string;
-  sku: string | null;
-  category_id: string | null;
+  sku?: string;
+  category_id?: string;
   category_name?: string | null;
   category_color?: string | null;
   sale_price: number;

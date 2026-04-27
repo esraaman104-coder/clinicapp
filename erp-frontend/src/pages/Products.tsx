@@ -56,7 +56,7 @@ export default function ProductsPage() {
   const loadCategories = async () => {
     try {
       const res = await categoriesApi.list({ limit: 100 });
-      setCategories(res.data.filter((c: Category & { is_active: boolean }) => c.is_active));
+      setCategories(res.data.filter((c: Category) => c.is_active === true));
     } catch {
       // silent fail
     }

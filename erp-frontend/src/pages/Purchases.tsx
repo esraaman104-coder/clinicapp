@@ -20,7 +20,7 @@ import type { PurchaseResponse, PurchaseCreateRequest } from '../types';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface Supplier { id: string; name: string; phone?: string; balance: number; }
-interface Product  { id: string; name: string; sku: string; cost_price: number; unit: string; }
+interface Product  { id: string; name: string; sku?: string; cost_price: number; unit: string; }
 interface Warehouse { id: string; name: string; }
 
 interface DraftItem {

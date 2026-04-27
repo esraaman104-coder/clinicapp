@@ -79,7 +79,7 @@ export default function CategoryManager({ isOpen, onClose, onCategoriesChange }:
     try {
       setSubmitLoading(true);
       setError('');
-      const data = { name: name.trim(), color, description: description.trim() || null, is_active: true };
+      const data = { name: name.trim(), color, description: description.trim() || undefined, is_active: true };
       if (editingId) {
         await categoriesApi.update(editingId, data);
       } else {

@@ -57,7 +57,7 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product }: Pr
   const loadCategories = async () => {
     try {
       const res = await categoriesApi.list({ limit: 100 });
-      setCategories(res.data.filter((c: Category & { is_active: boolean }) => c.is_active));
+      setCategories(res.data.filter((c: Category) => c.is_active === true));
     } catch {
       // silent fail - categories are optional
     }
@@ -76,11 +76,11 @@ export default function ProductModal({ isOpen, onClose, onSuccess, product }: Pr
       setError('');
       const data = {
         name: name.trim(),
-        sku: sku.trim() || null,
+        sku: sku.trim() || undefined,
         unit: unit.trim(),
         cost_price: Number(costPrice),
         sale_price: Number(salePrice),
-        category_id: categoryId || null,
+        category_id: categoryId || undefined,
         min_stock: Number(minStock),
         is_active: true
       };
