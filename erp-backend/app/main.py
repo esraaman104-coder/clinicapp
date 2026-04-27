@@ -37,11 +37,8 @@ async def get_redis() -> aioredis.Redis:
     return _redis_client
 
 # ─── CORS ─────────────────────────────────────────────────────────────────────
-_raw_origins = os.getenv(
-    "ALLOWED_ORIGINS",
-    "http://localhost:5173,http://localhost:5174,http://localhost:5175,http://127.0.0.1:5173,http://127.0.0.1:5174,http://127.0.0.1:5175"
-)
-ALLOWED_ORIGINS = [o.strip() for o in _raw_origins.split(",") if o.strip()]
+_raw_origins = os.getenv("ALLOWED_ORIGINS", "*")
+ALLOWED_ORIGINS = ["*"] if _raw_origins == "*" else [o.strip() for o in _raw_origins.split(",") if o.strip()]
 
 # ─── Lifespan — pool warm-up & clean shutdown ─────────────────────────────────
 @asynccontextmanager
@@ -125,9 +122,9 @@ app.include_router(logs_router,       prefix="/api")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
-    allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allow_headers=["Authorization", "Content-Type", "Accept"],
+    allow_credentials=True if _raw_origins != "*" else False,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # ─── Root Endpoints ───────────────────────────────────────────────────────────
